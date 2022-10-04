@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import Checklist from '../database/models/checklist'
 //------------------------------------------------------------------------
-export const postChecklist = async (req: { body: { name: String; description: String }
+export const postChecklist: RequestHandler = async (req: { body: { name: String; description: String }
 }, res: any ) =>{
      console.log(req.body);
         const ChecklistToAdd = new Checklist({
@@ -35,6 +35,7 @@ export const getChecklist: RequestHandler = async (req, res) =>{
     console.log("getChecklist")
     try {
     const checklists = await Checklist.findById(req.params.id);
+    console.log(checklists)
     return res.json(checklists);
    } catch (error) {
         console.log("erro no get de uma checklist.... \n", error);
@@ -45,9 +46,9 @@ export const getChecklist: RequestHandler = async (req, res) =>{
 export const getChecklists: RequestHandler = async (req, res) =>{
     console.log("Getting Localhost:4000")
     try {
-      
         const checklists = await Checklist.find();
         return res.json(checklists);
+        
     } catch (error) {
         console.log("Erro no get das checklists...\n", error);
     }

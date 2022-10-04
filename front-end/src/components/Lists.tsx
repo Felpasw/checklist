@@ -1,16 +1,19 @@
 
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-//import checklist from './backend/Database/models/checklist';
+import React, {Fragment, useEffect, useState} from 'react';
+import {Link, useHistory } from 'react-router-dom';
+
 
 interface Checkist{
-    id: string,
+    _id: string,
     name: string,
-    description: string
+    description: string,
+    image: string
 }
 
 export default function Lists (){
     const [checkist, setChecklist] = useState([] as Checkist[]);
+    const history = useHistory();
 
     const getItems = async () => {
         console.log("Alo porra entramo no getcu")
@@ -23,19 +26,25 @@ export default function Lists (){
        getItems();
         console.log("Ta suave")
     }, [])
-  
-    const handleRemove = (id: string) =>{
-        axios.delete(`http://localhost:4000/signup/${id}`)
+    const edit = (_id: string) =>{
+        history.push(`/update/${_id}`)
     }
-    // const handleRemoveChange = (id: typeof mongoose.Types.ObjectId.toString) => {
-    //     axios.put(`http://localhost:4000/signup/${id}`)
-    // }
-    return(
 
+    const handleRemove = (_id: string) =>{
+        console.log(_id)
+        axios.delete(`http://localhost:4000/signup/${_id}`)
+    }
+
+    return(
+        <Fragment>
             <ul>
                 { checkist.map((element) => 
-                <><li>Nome: {element.name} </li><li>Descrição: {element.description}  <button onClick={() => handleRemove(element.id)}>Remover </button> <button> Editar </button></li> </> )}
+                <><li>Nome: {element.name} </li><li>Descrição: {element.description}  
+                <button onClick={() => handleRemove(element._id)}>Remover </button> 
+                <button onClick={() => edit(element._id)}>Editar</button></li>
+                <img src= {`${element.image}`} alt="N carrgo essa porra :(" /> </>  )}
           </ul>
-        
+          <button onClick = {() => console.log("a")} ><Link to ="/new-checklist" >Cadastrar nova checkist</Link></button>
+          </Fragment>
     )
     }

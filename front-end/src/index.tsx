@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Form from './components/Forms';
 import Lists from './components/Lists';
+// import edits from './components/edits';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
@@ -14,7 +15,8 @@ root.render(
     <BrowserRouter>
       <Switch>
        <Route exact path="/" component = {Lists}/> 
-       <Route exact path="/new-checklist"component={Form}/>
+       <Route path="/new-checklist" component={Form}/>
+       <Route path ="/update/:id"  component={Form}/>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>

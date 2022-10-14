@@ -11,20 +11,23 @@
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
+    "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "switch": "^0.0.0",
+    "testing-library": "^0.0.2",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -45,10 +48,11 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "App.tsx",
+  "main": "./src/Index.tsx",
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "vitest": "^0.24.1"
   }
 }

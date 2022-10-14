@@ -1,19 +1,26 @@
-import { RequestHandler } from "express";
+import{ RequestHandler, NextFunction } from "express";
 import Checklist from '../database/models/checklist'
 //------------------------------------------------------------------------
-export const postChecklist: RequestHandler = async (req: { body: { name: String; description: String }
-}, res: any ) =>{
-     console.log(req.body);
-        const ChecklistToAdd = new Checklist({
-            name: req.body.name,
-            description: req.body.description
-        })
-        ChecklistToAdd.save().then((data) => {
-            console.log(data);
-        })
-        res.status(200);
-        return res.json(); 
-    }
+export const postChecklist: RequestHandler = async (req: { body: { name: string; description: string, image:string }
+}, res: any) =>{
+        console.log(req.body);
+        if(req.body.description || req.body.name || req.body.image == null ){
+                res.json("Não!")
+               throw new Error("Unable to create a checklist without image, description or name. \n Please fill in all the inputs correctly.");
+            }else {
+                const ChecklistToAdd = new Checklist({
+                    name: req.body.name,
+                    description: req.body.description,
+                    image: req.body.image
+                })
+                ChecklistToAdd.save().then((data) => {
+                    console.log(data);
+                })
+                res.status(200);
+                return res.json(); 
+            }
+           
+        }
 //-----------------------------------------------------------------------
 export const delChecklist: RequestHandler = async (req , res) => {
     console.log(req.params.id);

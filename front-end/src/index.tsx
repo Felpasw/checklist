@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Form from './components/Forms';
 import Lists from './components/Lists';
-// import edits from './components/edits';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 

@@ -3,6 +3,7 @@ import Axios from 'axios';
 import {Link, useParams, useHistory} from 'react-router-dom';
 import axios from "axios";
 
+
 interface Params{
   id: string
 }
@@ -42,7 +43,7 @@ async function GetCheckklist(id: string){
     const [formValues, setFormValues] = useState(ZeroState);
 
 
-    const handleChange = (e: { target: { name: string; value: string; }; }) =>{
+    const handleChange = (e: { target: { name: string; value: string; }; }): void =>{
       let name  = e.target.name;
       let  value = e.target.value;
       setFormValues({...formValues, [name]: value})
@@ -50,7 +51,7 @@ async function GetCheckklist(id: string){
       console.log(`${name} \n ${value}`)
     }
   
-    const handleSubimmit = () =>{
+    const handleSubimmit = (): void =>{
         const register ={
             name: formValues.name,
             description: formValues.description,
@@ -60,7 +61,7 @@ async function GetCheckklist(id: string){
     }
 
 
-    const handleUpdate = (id: string) =>{
+    const handleUpdate = (id: string): void =>{
       const register ={
         name: formValues.name,
         description: formValues.description,
@@ -68,6 +69,10 @@ async function GetCheckklist(id: string){
     }
   Axios.put(`http://localhost:4000/signup/${Params.id}`, register);
 }
+
+    const refreshPage = (): void => {
+      window.location.reload()
+    }
 
 if(Params.id){
   return (    
@@ -82,9 +87,9 @@ if(Params.id){
       <label htmlFor="description"> Imagem Motivacional: </label>
       <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image}/>
       <hr />
-        <button> Editar </button>
+        <button onClick={() => refreshPage()} data-testid="EditButton"> Editar </button>
         
-      <button><Link to ="/"> Voltar </Link> </button> 
+      <button onClick={() => refreshPage()}><Link to ="/"> Voltar </Link> </button> 
        
     </form>
     </Fragment>
@@ -93,7 +98,6 @@ if(Params.id){
 else{
   return (    
     <Fragment>
-
     <form onSubmit={() => handleSubimmit()}>
     <label htmlFor="name">Nome: </label>
       <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name}/>
@@ -104,10 +108,9 @@ else{
       <label htmlFor="description"> Imagem Motivacional: </label>
       <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image}/>
       <hr />
-        <button> Enviar </button>
+        <button data-testid="SendButton"> Enviar </button>
         
-      <button><Link to ="/"> Voltar </Link> </button> 
-       
+      <button onClick={() => refreshPage()}><Link to ="/"> Voltar </Link> </button> 
     </form>
     </Fragment>
   );

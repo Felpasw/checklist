@@ -3,11 +3,7 @@ import Checklist from '../database/models/checklist'
 //------------------------------------------------------------------------
 export const postChecklist: RequestHandler = async (req: { body: { name: string; description: string, image:string }
 }, res: any) =>{
-        console.log(req.body);
-        if(req.body.description || req.body.name || req.body.image == null ){
-                res.json("Não!")
-               throw new Error("Unable to create a checklist without image, description or name. \n Please fill in all the inputs correctly.");
-            }else {
+        
                 const ChecklistToAdd = new Checklist({
                     name: req.body.name,
                     description: req.body.description,
@@ -18,7 +14,6 @@ export const postChecklist: RequestHandler = async (req: { body: { name: string;
                 })
                 res.status(200);
                 return res.json(); 
-            }
            
         }
 //-----------------------------------------------------------------------

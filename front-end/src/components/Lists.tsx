@@ -6,6 +6,7 @@ import 'bulma/css/bulma.min.css'
 
 
 
+
 interface Checkist{
     _id: string,
     name: string,
@@ -42,28 +43,57 @@ export default function Lists (){
         window.location.reload()
   
       }
-    let column = 1;
+   
+    // checkist.map((element) =>
+    // <>
+    //       <div className='column is-4'>
+    //  <div className='box'>
+    // <hr />
+    //         <h1 className='title'>Nome: {element.name}</h1>
+    //         <h3 className='subtitle is-6'>Descrição: {element.description}</h3>
+    //         <figure className='image is-128x128'>
+    //         <img src= {`${element.image}`} alt="N carrgo essa porra :("  className='is-rounded'/>
+    //         </figure>
+    //         <div className="buttons are-medium">
+    //             <button className='button' onClick={() => handleRemove(element._id)}>Remover </button>
+    //             <button className='button' onClick={() => edit(element._id)}>Editar</button>
+    //         </div>
+    //     </div>
+    //     </div>
+    // </>
+     
+      
     return(
         <Fragment>
-        <button className='buttons'  onClick = {() =>  refreshPage()}><Link to ="/new-checklist" >Cadastrar nova checkist</Link></button>
-<div className='columns columns is-mobile'>
-       
-                { 
-                checkist.map((element) => 
+        <div className='column is-4 is-offset-5'>
+                <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined'><Link to ="/new-checklist">Cadastrar nova checkist</Link></button>
+        </div>
+   
+    <div className='columns is-multiline'>
+            { 
+                checkist.map( (element) =>
+              
             <>
-             <div className='box' >
-             <div className='column is-4'></div>
+                  <div className='column is-4 ' >
+             <div className='box'>
             <hr />
                     <h1 className='title'>Nome: {element.name}</h1>
                     <h3 className='subtitle is-6'>Descrição: {element.description}</h3>
-                    <img src= {`${element.image}`} alt="N carrgo essa porra :(" />
+                    <figure className='image is-128x128'>
+                    <img src= {`${element.image}`} alt="N carrgo essa porra :("  className='is-rounded'/>
+                    </figure>
                     <div className="buttons are-medium">
                         <button className='button' onClick={() => handleRemove(element._id)}>Remover </button>
                         <button className='button' onClick={() => edit(element._id)}>Editar</button>
                     </div>
                 </div>
-            </>)}
+                </div>
+            </>
+            
+           )}
         </div>
     </Fragment>
-    )
-    }
+    
+    )  
+}
+//}

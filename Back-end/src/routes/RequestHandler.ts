@@ -3,18 +3,20 @@ import Checklist from '../database/models/checklist'
 //------------------------------------------------------------------------
 export const postChecklist: RequestHandler = async (req: { body: { name: string; description: string, image:string }
 }, res: any) =>{
-        
-                const ChecklistToAdd = new Checklist({
-                    name: req.body.name,
-                    description: req.body.description,
-                    image: req.body.image
+        try {
+            const ChecklistToAdd = new Checklist({
+                name: req.body.name,
+                description: req.body.description,
+                image: req.body.image
                 })
-                ChecklistToAdd.save().then((data) => {
-                    console.log(data);
-                })
-                res.status(200);
-                return res.json(); 
-           
+            ChecklistToAdd.save().then((data) => {
+                console.log(data);
+            })
+            res.status(200);
+            return res.json(); 
+        } catch (error: unknown) {
+            return error
+        } 
         }
 //-----------------------------------------------------------------------
 export const delChecklist: RequestHandler = async (req , res) => {

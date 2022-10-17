@@ -1,14 +1,13 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { describe, test } from "vitest";
+import { describe, test, it, assert} from "vitest";
 import App from './Forms';
-
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
 
 
-  it('should render de button - "Enviar"-  ',()=>{
+  it('should render the button - "Enviar"-  ', ()=>{
     const history = createMemoryHistory();
     const route = '/new-checklist';
     history.push(route);
@@ -22,7 +21,7 @@ import { createMemoryHistory } from 'history';
     expect(screen.getByTestId("SendButton")).toHaveTextContent(text)
   })
 
-  it('should render de button - "Editar"-  ',()=>{
+  it('should render the button - "Editar"-  ',()=>{
     const history = createMemoryHistory();
     const route = '/update/633b5c93176bcbb059429b76';
     history.push(route);
@@ -35,3 +34,6 @@ import { createMemoryHistory } from 'history';
     expect(screen.getByTestId('EditButton')).toBeVisible()
     expect(screen.getByTestId('EditButton')).toHaveTextContent('Editar')
   })
+ 
+ 
+

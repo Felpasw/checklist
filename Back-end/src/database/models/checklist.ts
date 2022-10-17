@@ -15,7 +15,8 @@ const Checklist =  new mongoose.Schema({
         required: true,
     },
     image: {
-        type: String
+        type: String,
+        required: true
     } 
 }) 
 export default mongoose.model('Checklist', Checklist)

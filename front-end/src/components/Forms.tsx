@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useEffect} from "react";
+import  { Fragment, useState, useEffect} from "react";
 import Axios from 'axios';
 import {Link, useParams, useHistory} from 'react-router-dom';
 import axios from "axios";
-
+import 'bulma/css/bulma.min.css'
 
 interface Params{
   id: string
@@ -52,22 +52,37 @@ async function GetCheckklist(id: string){
     }
   
     const handleSubimmit = (): void =>{
-        const register ={
+        
+      const register ={
             name: formValues.name,
             description: formValues.description,
             image: formValues.image
         }
-      Axios.post('http://localhost:4000/signup', register);
+      if (register.name && register.description && register.image) {
+        Axios.post('http://localhost:4000/signup', register)
+      }
+      else{
+        
+        window.alert("Preencha todos os campos corretamente!")
+        
+      } 
+      
     }
 
 
-    const handleUpdate = (id: string): void =>{
+    const handleUpdate = (): void =>{
       const register ={
         name: formValues.name,
         description: formValues.description,
         image: formValues.image
     }
-  Axios.put(`http://localhost:4000/signup/${Params.id}`, register);
+      if (register.name && register.description && register.image) {
+          Axios.put(`http://localhost:4000/signup/${Params.id}`, register);
+      }
+      else{
+          window.alert("Preencha todos os campos corretamente!")
+      } 
+  
 }
 
     const refreshPage = (): void => {
@@ -77,41 +92,52 @@ async function GetCheckklist(id: string){
 if(Params.id){
   return (    
     <Fragment>
-    <form onSubmit={() => handleUpdate(formValues._id)}>
+    <div className="columns" id="forms">
+    <div className="column is-4 is-offset-4">
+    <div className="box">
+    <form onSubmit={() => handleUpdate()}>
       <label htmlFor="name">Nome: </label>
-      <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name}/>
+      <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name}className ="input"/>
       <br />
       <label htmlFor="description">Descrição: </label>
-      <input type = "text" id='description' name="description"  onChange={handleChange} value={formValues.description}/>
+      <input type = "text" id='description' name="description"  onChange={handleChange} value={formValues.description} className ="input"/>
       <br />  
-      <label htmlFor="description"> Imagem Motivacional: </label>
-      <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image}/>
+      <label htmlFor="description" > Imagem Motivacional: </label>
+      <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image} className ="input"/>
       <hr />
-        <button onClick={() => refreshPage()} data-testid="EditButton"> Editar </button>
+        <button onClick={() => refreshPage()} data-testid="EditButton"className="button"> Editar </button>
         
-      <button onClick={() => refreshPage()}><Link to ="/"> Voltar </Link> </button> 
+      <button onClick={() => refreshPage()}className="button"><Link to ="/"> Voltar </Link> </button> 
        
     </form>
+    </div>
+    </div>
+    </div>
     </Fragment>
   );
 }
 else{
   return (    
     <Fragment>
-    <form onSubmit={() => handleSubimmit()}>
-    <label htmlFor="name">Nome: </label>
-      <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name}/>
-      <br />
-      <label htmlFor="description">Descrição: </label>
-      <input type = "text" id='description' name="description"  onChange={handleChange} value={formValues.description}/>
-      <br />  
-      <label htmlFor="description"> Imagem Motivacional: </label>
-      <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image}/>
-      <hr />
-        <button data-testid="SendButton"> Enviar </button>
-        
-      <button onClick={() => refreshPage()}><Link to ="/"> Voltar </Link> </button> 
-    </form>
+    <div className="columns">
+        <div className="column is-4 is-offset-4">
+        <div className="box">
+          <form onSubmit={() => handleSubimmit()}>
+          <label htmlFor="name">Nome: </label>
+          <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name} className="input"/>
+          <br />
+          <label htmlFor="description">Descrição: </label>
+          <input type = "text" id='description' name="description"  onChange={handleChange} value={formValues.description} className ="input"/>
+          <br />  
+          <label htmlFor="description"> Imagem Motivacional: </label>
+          <input type="text" id='image' name="image" onChange={handleChange} value={formValues.image} className ="input"/>
+          <hr />
+          <button data-testid="SendButton" className="button"> Enviar </button>
+          <button onClick={() => refreshPage()}className="button"><Link to ="/"> Voltar </Link> </button> 
+          </form>
+        </div>
+    </div>
+    </div>
     </Fragment>
   );
 }

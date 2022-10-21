@@ -17,6 +17,12 @@ const Checklist =  new mongoose.Schema({
     image: {
         type: String,
         required: true
-    } 
+    },
+    DWeek: {
+        type: String,
+        required: true
+
+    }
+    
 }) 
 export default mongoose.model('Checklist', Checklist)

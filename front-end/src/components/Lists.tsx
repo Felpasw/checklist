@@ -50,7 +50,7 @@ export default function Lists (){
               
             <>   <br />
                   <div className='column is-4 ' >
-         
+                  <div className="card bg-blur">
              <div className='box'>
             <div className='is-primary'>
             <hr />
@@ -58,16 +58,17 @@ export default function Lists (){
                     <h1 className='title'>Nome: {element.name}</h1>
                     <h3 className='subtitle is-6'>Descrição: {element.description}</h3>
                     <h3 className='subtitle is-5'>Dia da semana a ser feito: {element.DWeek}</h3>
-                    <figure className='image is-128x128'>
+                    <figure className='image  is-128x128'>
                     <img src= {`${element.image}`} alt="N carrgo essa porra :("  className='is-rounded'/>
                     </figure>
 
-                    <div className="buttons are-medium">
-                        <button className='button' onClick={() => handleRemove(element._id)}>Remover </button>
-                        <button className='button' onClick={() => edit(element._id)}>Editar</button>
+                    <div className="buttons are-medium ">
+                        <button className='button is-primary is-outlined is-rounded' onClick={() => handleRemove(element._id)}>Remover </button>
+                        <button className='button is-primary is-outlined is-rounded' onClick={() => edit(element._id)}>Editar</button>
                     </div>
                 </div>
                 </div>
+            </div>
             </div>
             </>
             

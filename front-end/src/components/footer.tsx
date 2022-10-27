@@ -29,6 +29,7 @@ export default function footer(){
       <strong> Made by: </strong> <a href="https://github.com/felpasw">Felipe Cavalcante Lacerda</a>.
       </p>
     </div>
+    
 </footer>
 )
 }

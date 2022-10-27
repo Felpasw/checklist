@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { describe, test, it, assert} from "vitest";
-import App from './Forms';
+import App from '../pages/Forms';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 

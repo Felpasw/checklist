@@ -52,6 +52,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-lottie": "^1.2.6",
     "@types/react-router-dom": "^5.3.3",
     "vitest": "^0.24.1"
   }

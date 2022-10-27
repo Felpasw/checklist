@@ -3,9 +3,9 @@ import axios from 'axios';
 import React, {Fragment, useEffect, useState} from 'react';
 import {Link, useHistory } from 'react-router-dom';
 import 'bulma/css/bulma.min.css'
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 import {Checkist, Dweek} from "./Forms"
-import Footer from "./footer";
+import Footer from "../components/footer";
 
 
 

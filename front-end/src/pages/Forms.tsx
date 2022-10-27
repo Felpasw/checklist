@@ -3,8 +3,8 @@ import Axios from 'axios';
 import {Link, useParams, useHistory} from 'react-router-dom';
 import axios from "axios";
 import 'bulma/css/bulma.min.css'
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 interface Params{
   id: string

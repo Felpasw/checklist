@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Form from './components/Forms';
-import Lists from './components/Lists';
+import Form from './pages/Forms';
+import Lists from './pages/Lists';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 

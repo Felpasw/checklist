@@ -14,11 +14,10 @@ router.use((req, res, next) => {
     next();
 });
 
-//Sets
-router.post('/signup', postChecklist);
-router.put('/signup/:id', updateChecklist);
-router.delete('/signup/:id', delChecklist);
-router.get('/signup/:id', getChecklist);
-router.get('/', getChecklists);
-
+//Sets 
+router.post('/Checklist', postChecklist);
+router.put('/Checklist/:id', updateChecklist);
+router.delete('/Checklist/:id', delChecklist);
+router.get('/Checklist/:id', getChecklist);
+router.get('/:id', getChecklists);
 export default router;

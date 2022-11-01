@@ -1,15 +1,18 @@
 import{ RequestHandler, NextFunction } from "express";
 import Checklist from '../database/models/checklist'
 
+
 //------------------------------------------------------------------------
-export const postChecklist: RequestHandler = async (req: { body: { name: string; description: string, image:string, DWeek: string }
+export const postChecklist: RequestHandler = async (req: { body: { name: string; description: string, image:string, DWeek: string, userID: string}
 }, res: any) =>{
         try {
             const ChecklistToAdd = new Checklist({
+                //UserId = req.body.userId,
                 name: req.body.name,
                 description: req.body.description,
                 image: req.body.image,
-                DWeek: req.body.DWeek
+                DWeek: req.body.DWeek,
+                userID: req.body.userID
                 })
             ChecklistToAdd.save().then((data) => {
                 console.log(data);
@@ -35,18 +38,18 @@ export const delChecklist: RequestHandler = async (req , res) => {
 }
 //------------------------------------------------------------------------
 export const updateChecklist: RequestHandler = async (req, res) =>{
-    const videoUpdate = await Checklist.findByIdAndUpdate(req.params.id, req.body);
-    console.log(videoUpdate);
+    const checklistToUpdate = await Checklist.findByIdAndUpdate(req.params.id, req.body);
+    console.log(checklistToUpdate);
     res.status(200)
 }
 //------------------------------------------------------------------------
 export const getChecklist: RequestHandler = async (req, res) =>{
     console.log("getChecklist")
     try {
-    const checklists = await Checklist.findById(req.params.id);
-    console.log(checklists)
-    res.status(200)
-    return res.json(checklists);
+        const checklists = await Checklist.findById(req.params.id);
+        console.log(checklists)
+        res.status(200)
+        return res.json(checklists);
     
    } catch (error) {
         res.status(404)
@@ -58,8 +61,11 @@ export const getChecklist: RequestHandler = async (req, res) =>{
 export const getChecklists: RequestHandler = async (req, res) =>{
     console.log("Getting Localhost:4000")
     try {
-        
-        const checklists = await Checklist.find();
+       const checklistToFind  = {
+            userID: req.params.id
+        }
+        const checklists = await Checklist.find(checklistToFind);
+        console.log(checklists)
         res.status(200)
         return res.json(checklists);
        
@@ -68,4 +74,3 @@ export const getChecklists: RequestHandler = async (req, res) =>{
         console.log("Erro no get das checklists...\n", error);
     }
 }
-//------------------------------------------------------------------------

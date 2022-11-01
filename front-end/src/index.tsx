@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Form from './pages/Forms';
 import Lists from './pages/Lists';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
+import InitialPage from "./pages/InitialPage";
 
 
 const root = ReactDOM.createRoot(
@@ -13,9 +13,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-       <Route exact path="/" component = {Lists}/> 
-       <Route path="/new-checklist" component={Form}/>
-       <Route path ="/update/:id"  component={Form}/>
+       <Route exact path="/" component = {InitialPage}/> 
+       <Route path="/:id/new-checklist" component={Form}/>
+       <Route path ="/update/:id/user/:userID"  component={Form}/>
+       <Route path = "/Checklists/:id" component={Lists}/>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>

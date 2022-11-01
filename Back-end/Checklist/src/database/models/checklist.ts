@@ -6,6 +6,10 @@ mongoose.connect("mongodb+srv://felipasso:felipasso@cluster0.fovabzu.mongodb.net
 
 
 const Checklist =  new mongoose.Schema({
+    
+    userID: {
+        type: String,
+    },
     name: {
         type: String,
         required: true,

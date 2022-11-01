@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function navbar(){
+export default function navbar(props:{userID:string}){
 
  
   const refreshPage = (): void => {
@@ -10,6 +10,7 @@ export default function navbar(){
 
 
   return(
+   
     <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item">
@@ -26,12 +27,12 @@ export default function navbar(){
   <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to = "/">Ver tarefas</Link></button>
+      <button onClick = {() =>  refreshPage()} id= "Checklists"  className='button button is-primary is-outlined is-rounded'><Link to = {`/Checklist/${props.userID}`}>Ver tarefas</Link></button>
       </a>
 
       <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to ="/new-checklist">Cadastrar nova checkist</Link></button>
+      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to ={`/${props.userID}/new-checklist`}>Cadastrar nova checkist</Link></button>
       </a>
 
 
@@ -39,5 +40,6 @@ export default function navbar(){
     </div>
   </div>
 </nav>
+
   )
 }

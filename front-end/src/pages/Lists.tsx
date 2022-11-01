@@ -1,21 +1,26 @@
 
 import axios from 'axios';
 import React, {Fragment, useEffect, useState} from 'react';
-import {Link, useHistory } from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import 'bulma/css/bulma.min.css'
 import Navbar from "../components/navbar";
-import {Checkist, Dweek} from "./Forms"
+import {Checkist, Dweek } from "./Forms"
 import Footer from "../components/footer";
 
 
-
+interface Params{
+    id: string,
+    userID: string
+  }
+  
 export default function Lists (){
     const [checkist, setChecklist] = useState([] as Checkist[]);
     const history = useHistory();
+    const params: Params = useParams();
 
     const getItems = async ()  => {
         console.log("Alo porra entramo no getcu")
-        axios.get('http://localhost:4000')
+        axios.get(`http://localhost:4000/${params.id}`)
         .then((response) => setChecklist(response.data));
         console.log("Alo porra entramo no CARALHO")
       }
@@ -25,24 +30,20 @@ export default function Lists (){
         console.log("Ta suave")
     }, [])
     const edit = (_id: string): void =>{
-        history.push(`/update/${_id}`)
+        history.push(`/update/${_id}/user/${params.userID}`)
         window.location.reload()
     }
 
     const handleRemove = (_id: string): void =>{
         console.log(_id)
-        axios.delete(`http://localhost:4000/signup/${_id}`)
+        axios.delete(`http://localhost:4000/Checklist/${_id}`)
         window.location.reload()
     }
-    const refreshPage = (): void => {
-        window.location.reload()
-  
-      }
      
       
     return(
         <Fragment>
-           <Navbar/>  
+           <Navbar userID =  {params.userID}/>
            <br /> 
     <div className='columns is-multiline'>
             { 

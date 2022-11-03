@@ -27,7 +27,7 @@ export default function navbar(props:{userID:string}){
   <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "Checklists"  className='button button is-primary is-outlined is-rounded'><Link to = {`/Checklist/${props.userID}`}>Ver tarefas</Link></button>
+      <button onClick = {() =>  refreshPage()} id= "Checklists"  className='button button is-primary is-outlined is-rounded'><Link to = {`/Checklists/${props.userID}`}>Ver tarefas</Link></button>
       </a>
 
       <div className="navbar-start">

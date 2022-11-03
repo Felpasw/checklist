@@ -1,4 +1,4 @@
-
+require("./database/models/user")
 require("./database/models/checklist")
 import express from 'express';
 import router from './routes/router';

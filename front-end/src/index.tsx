@@ -14,9 +14,9 @@ root.render(
     <BrowserRouter>
       <Switch>
        <Route exact path="/" component = {InitialPage}/> 
-       <Route path="/:id/new-checklist" component={Form}/>
+       <Route path="/:userID/new-checklist" component={Form}/>
        <Route path ="/update/:id/user/:userID"  component={Form}/>
-       <Route path = "/Checklists/:id" component={Lists}/>
+       <Route path = "/Checklists/:userID" component={Lists}/>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,7 +1,6 @@
 import  { Fragment, useState, useEffect} from "react";
-import Axios from 'axios';
 import {Link, useParams, useHistory, Redirect} from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 import 'bulma/css/bulma.min.css'
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -17,12 +16,13 @@ export type Dweek = "Domingo" | "Segunda-Feira" | "Terça-feira" | "Quarta-Feira
   description: string,
   image: string,
   DWeek: Dweek,
+  userID: string
 }
 
 //----------------------------------------------
 
 async function GetCheckklist(id: string){
-  let checklistfound: Checkist = await axios.get(`http://localhost:4000/Checklist/${id}`).then(response=> {return response.data})
+  let checklistfound: Checkist = await axios.get(`http://localhost:4000/Checklist/${id}`).then((response: { data: any; })=> {return response.data})
   console.log(checklistfound)
   return checklistfound
 }
@@ -36,7 +36,8 @@ async function GetCheckklist(id: string){
       name: '',
       description: '',
       image: '',
-      DWeek: 'Domingo' 
+      DWeek: 'Domingo' ,
+      userID: Params.userID
     }  
 
     useEffect(() => {
@@ -72,7 +73,7 @@ async function GetCheckklist(id: string){
             userID: Params.userID
         }
       if (register.name && register.description && register.image && formValues.DWeek) {
-        Axios.post('http://localhost:4000/Checklist', register)
+        axios.post('http://localhost:4000/Checklist', register)
       }
       else{
         window.alert("Preencha todos os campos corretamente!")
@@ -90,7 +91,7 @@ async function GetCheckklist(id: string){
         userID: Params.userID
     }
       if (register.name && register.description && register.image && formValues.DWeek) {
-          Axios.put(`http://localhost:4000/Checklist/${Params.id}`, register);
+          axios.put(`http://localhost:4000/Checklist/${Params.id}`, register);
       }
       else{
           window.alert("Preencha todos os campos corretamente!")

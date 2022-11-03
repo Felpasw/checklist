@@ -17,11 +17,12 @@ export default function Lists (){
     const [checkist, setChecklist] = useState([] as Checkist[]);
     const history = useHistory();
     const params: Params = useParams();
+    console.log(params)
 
     const getItems = async ()  => {
         console.log("Alo porra entramo no getcu")
         axios.get(`http://localhost:4000/${params.id}`)
-        .then((response) => setChecklist(response.data));
+        .then((response: { data: React.SetStateAction<Checkist[]>; }) => setChecklist(response.data));
         console.log("Alo porra entramo no CARALHO")
       }
 
@@ -29,8 +30,8 @@ export default function Lists (){
        getItems();
         console.log("Ta suave")
     }, [])
-    const edit = (_id: string): void =>{
-        history.push(`/update/${_id}/user/${params.userID}`)
+    const edit = (_id: string, userID:String): void =>{
+        history.push(`/update/${_id}/user/${userID}`)
         window.location.reload()
     }
 
@@ -65,7 +66,7 @@ export default function Lists (){
 
                     <div className="buttons are-medium ">
                         <button className='button is-primary is-outlined is-rounded' onClick={() => handleRemove(element._id)}>Remover </button>
-                        <button className='button is-primary is-outlined is-rounded' onClick={() => edit(element._id)}>Editar</button>
+                        <button className='button is-primary is-outlined is-rounded' onClick={() => edit(element._id, element.userID)}>Editar</button>
                     </div>
                 </div>
                 </div>

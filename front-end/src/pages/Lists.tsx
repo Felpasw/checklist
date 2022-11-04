@@ -9,7 +9,6 @@ import Footer from "../components/footer";
 
 
 interface Params{
-    id: string,
     userID: string
   }
   
@@ -21,7 +20,7 @@ export default function Lists (){
 
     const getItems = async ()  => {
         console.log("Alo porra entramo no getcu")
-        axios.get(`http://localhost:4000/${params.id}`)
+        axios.get(`http://localhost:4000/${params.userID}`)
         .then((response: { data: React.SetStateAction<Checkist[]>; }) => setChecklist(response.data));
         console.log("Alo porra entramo no CARALHO")
       }

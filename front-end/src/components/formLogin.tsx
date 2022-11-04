@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Axios from 'axios'
-import { Redirect, useHistory } from "react-router-dom";
+import {  Link, useHistory } from "react-router-dom";
 
 
 
@@ -34,10 +34,16 @@ export default function FormLogin (){
   }
 if (register.name && register.password) {
     const response= await Axios.post('http://localhost:4000/Login', register)
+      if(response.data != null){
+        console.log(response.data._id)
+        history.push(`/Checklists/${response.data._id}`)
+        refreshPage();
+      }
+      else{
+        alert("Usuário não encontrado!")
+      }
    
-    console.log(response.data._id)
-    history.push(`/Checklists/${response.data._id}`)
-   refreshPage();
+   
 
 }
 else{
@@ -62,9 +68,13 @@ else{
     </span>
           <br />   
   <br />
-            <div className="column is-offset-4">
+            <div className="column is-offset-2">
               <button data-testid="SendButton"className="button is-medium is-primary is-outlined is-rounded"> Entrar </button>
-            </div>
+              
+              <Link to="/Signup">
+              <button data-testid="SignupButton"className="button is-medium is-primary is-outlined is-rounded"> Cadastrar </button>
+              </Link>
+              </div>
           </form>
         </div>
     </div>

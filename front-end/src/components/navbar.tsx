@@ -13,9 +13,9 @@ export default function navbar(props:{userID:string}){
    
     <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-    <a className="navbar-item">
+   <Link to={`/`} className="navbar-item" onClick={()=> refreshPage()}>
         <img src='../ChecklistLog.png' className="image  is-128x128" />
-    </a>
+    </Link>
 
     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -32,7 +32,7 @@ export default function navbar(props:{userID:string}){
 
       <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to ={`/${props.userID}/new-checklist`}>Cadastrar nova checkist</Link></button>
+      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to ={`/${props.userID}/new-checklist`}>Cadastrar nova tarefa</Link></button>
       </a>
 
 

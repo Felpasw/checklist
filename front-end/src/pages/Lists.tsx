@@ -4,8 +4,11 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import 'bulma/css/bulma.min.css'
 import Navbar from "../components/navbar";
-import {Checkist, Dweek } from "./Forms"
+import {Checkist, Dweek } from "../@types"
 import Footer from "../components/footer";
+
+import{FiEdit} from 'react-icons/fi' 
+import {MdOutlineRemoveCircleOutline} from 'react-icons/md'
 
 
 interface Params{
@@ -64,8 +67,8 @@ export default function Lists (){
                     </figure>
 
                     <div className="buttons are-medium ">
-                        <button className='button is-primary is-outlined is-rounded' onClick={() => handleRemove(element._id)}>Remover </button>
-                        <button className='button is-primary is-outlined is-rounded' onClick={() => edit(element._id, element.userID)}>Editar</button>
+                        <button className='button is-primary is-outlined is-rounded' onClick={() => handleRemove(element._id)}><MdOutlineRemoveCircleOutline/> Remover  </button>
+                        <button className='button is-primary is-outlined is-rounded' onClick={() => edit(element._id, element.userID)}><FiEdit/>Editar</button>
                     </div>
                 </div>
                 </div>

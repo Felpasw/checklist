@@ -4,20 +4,8 @@ import axios from 'axios';
 import 'bulma/css/bulma.min.css'
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import {Checkist, Dweek, Params} from '../@types'
 
-interface Params{
-  id: string,
-  userID: string
-}
-export type Dweek = "Domingo" | "Segunda-Feira" | "Terça-feira" | "Quarta-Feira" | "Quinta-Feira" | "Sexta-Feira" | "Sábado"
- export interface Checkist{
-  _id: string,
-  name: string,
-  description: string,
-  image: string,
-  DWeek: Dweek,
-  userID: string
-}
 
 //----------------------------------------------
 

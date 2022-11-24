@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from "react";
 import Axios from 'axios'
+
 import {  Link, useHistory } from "react-router-dom";
 
+
+import {IoIosContact} from 'react-icons/io'
+import{ImEnter} from 'react-icons/im'
 
 
 let ZeroState = {
@@ -55,29 +59,29 @@ else{
     <div className="columns">
         <div className="column is-4 is-offset-4">
         <br />
-        <div className="box">
-          <form onSubmit={(e) => handleSubimmit(e)}>
-          
-          <label htmlFor="name">Nome: </label>
-          <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name} className="input is-primary"/>
-          <br />
-          <label htmlFor="description">Senha: </label>
-          <input type="password" id='description' name="password"  onChange={handleChange} value={formValues.password} className=" input is-primary"/>
-          <span className="icon is-small is-left">
-          <i className="fas fa-lock"></i>
-    </span>
-          <br />   
-  <br />
-            <div className="column is-offset-2">
-              <button data-testid="SendButton"className="button is-medium is-primary is-outlined is-rounded"> Entrar </button>
-              
-              <Link to="/Signup">
-              <button data-testid="SignupButton"className="button is-medium is-primary is-outlined is-rounded"> Cadastrar </button>
-              </Link>
+          <div className="box">
+            <form onSubmit={(e) => handleSubimmit(e)}>
+              <label htmlFor="name">Nome: </label>
+              <input type="text" id='name' name="name" onChange={handleChange} value={formValues.name} className="input is-primary"/>
+              <br />
+              <label htmlFor="description">Senha: </label>
+              <input type="password" id='description' name="password"  onChange={handleChange} value={formValues.password} className=" input is-primary"/>
+              <span className="icon is-small is-left">
+                <i className="fas fa-lock"></i>
+              </span>
+              <br />   
+              <br />
+              <div className="column is-offset-4">
+                <button data-testid="SendButton"className="button is-medium is-primary is-outlined is-rounded"> <ImEnter/> Entrar </button>  
               </div>
           </form>
+          <div className="column is-offset-4">
+            <a href={"/Signup"}>
+                <button data-testid="SignupButton"className="button is-medium is-primary is-outlined is-rounded"> <IoIosContact/>Cadastrar </button>
+            </a>
+          </div>
         </div>
     </div>
-    </div>  
+  </div>  
     </Fragment>)
 }

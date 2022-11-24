@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom"
+import {ImHome} from 'react-icons/im'
+
+
 
 export default function navbar(props:{userID:string}){
 
@@ -13,9 +15,10 @@ export default function navbar(props:{userID:string}){
    
     <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-   <Link to={`/`} className="navbar-item" onClick={()=> refreshPage()}>
-        <img src='../ChecklistLog.png' className="image  is-128x128" />
-    </Link>
+  
+   <a href= {`/`} className="navbar-item is-primary" onClick={()=> refreshPage()}>
+          <ImHome/>
+    </a>
 
     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -27,12 +30,12 @@ export default function navbar(props:{userID:string}){
   <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "Checklists"  className='button button is-primary is-outlined is-rounded'><Link to = {`/Checklists/${props.userID}`}>Ver tarefas</Link></button>
+      <a href={`/Checklists/${props.userID}`}> <button onClick = {() =>  refreshPage()} id= "Checklists"  className='button button is-primary is-outlined is-rounded'>Ver tarefas</button></a>
       </a>
 
       <div className="navbar-start">
       <a className="navbar-item">
-      <button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'><Link to ={`/${props.userID}/new-checklist`}>Cadastrar nova tarefa</Link></button>
+      <a href = {`/${props.userID}/new-checklist`}><button onClick = {() =>  refreshPage()} id= "New-Checklist"  className='button button is-primary is-outlined is-rounded'>Cadastrar nova tarefa</button></a>
       </a>
 
 

@@ -32,10 +32,9 @@ async function GetCheckklist(id: string){
       console.log("Alo, sexo tranquilo e agendado!")
       if(Params.id){
         GetCheckklist(Params.id).then(data => setFormValues(data))
-        console.log("VAI TOMAR NO CU!")
+        
       }
-      console.log("tmj")
-     
+      
     },[]) 
 
     console.log(Params)

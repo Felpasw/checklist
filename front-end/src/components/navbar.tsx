@@ -1,7 +1,5 @@
 import {ImHome} from 'react-icons/im'
 
-
-
 export default function navbar(props:{userID:string}){
 
  

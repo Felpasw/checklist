@@ -6,7 +6,6 @@ import {postChecklist,delChecklist,updateChecklist, getChecklist, getChecklists,
 const router = express.Router();
 
 
-// VAI TOMA NO SEU CU POLÍTICA CORS 
 router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
